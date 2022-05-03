@@ -29,8 +29,6 @@ INNER JOIN Person.Person PP (NOLOCK) ON
 
 ORDER BY Salário_Mês DESC
 ~~~
-
-
 -----
 
 ### Funções Utilizadas:
@@ -64,3 +62,6 @@ BEGIN
 	
 END
 ~~~~
+
+-------------
+<img src = img/img.png>

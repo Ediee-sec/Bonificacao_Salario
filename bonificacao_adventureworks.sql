@@ -5,15 +5,15 @@ DECLARE
 		,	@Data		VARCHAR(10) = SUBSTRING(dbo.FormataData(GETDATE()),1,10)
 
 SELECT 
-		FirstName	AS	'NOME'
+		FirstName	AS	'Nome'
 	,	LastName	AS	'Sobrenome'
 	,	JobTitle	AS	'Cargo'
-	,	(Rate * @JornadaTrabalho * @DiasMes)	AS	'Salário_Mês'
-	,	dbo.FormataData(HireDate)	AS	'Data_Contratação'
+	,	(Rate * @JornadaTrabalho * @DiasMes)	AS	'SalÃ¡rio_MÃªs'
+	,	dbo.FormataData(HireDate)	AS	'Data_ContrataÃ§Ã£o'
 	,	CONCAT(@Bonificacao * (2013 - YEAR(HireDate)) * 100, ' %') AS '% Porcentagem' 
 	,	CASE
 			WHEN YEAR(HireDate) BETWEEN 2000 AND 2013 THEN CONVERT(DEC(10,2),@Bonificacao * Rate * (2013 - YEAR(HireDate)) * @JornadaTrabalho * @DiasMes)
-		END AS 'Bonificação_Total'
+		END AS 'BonificaÃ§Ã£o_Total'
 FROM HumanResources.Employee HRE
 
 INNER JOIN HumanResources.EmployeePayHistory HREP (NOLOCK) ON
@@ -22,7 +22,7 @@ INNER JOIN HumanResources.EmployeePayHistory HREP (NOLOCK) ON
 INNER JOIN Person.Person PP (NOLOCK) ON
 	PP.BusinessEntityID = HRE.BusinessEntityID
 
-ORDER BY Salário_Mês DESC
+ORDER BY SalÃ¡rio_MÃªs DESC
 
 
 
